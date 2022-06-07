@@ -10,7 +10,7 @@ const MainNavigation = () => {
   return (
     <header className={isMobile?classes.media:classes.header}>
       <div className={classes.top}>
-      <div className={classes.logo}>YST AUTO</div>
+      <div className={classes.logo}>CANLOVEADA &nbsp;  AUTO</div>
       <div className={classes.contact}>Contact Info</div>
       </div>
       <nav className={classes.nav}>

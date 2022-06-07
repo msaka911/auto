@@ -16,6 +16,9 @@ const Footer=()=>{
                 <h3>Hourse Of Operation</h3>
             </div>
         </div>
+        <div>
+            <h5 style={{margin:"auto",width:"100%",color:"white", textAlign:"center"}}>All Rights reserved CANLOVEADA INC.</h5>
+        </div>
         </Fragment>
     )
 }

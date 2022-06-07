@@ -35,7 +35,7 @@ const LeftArrow = ({ style, onClick }) => (
 
 const RightArrow = ({ style, onClick }) => (
   <button
-    style={{ ...style, borderWidth: "0",right: 0,marginRight:"-1rem", backgroundColor: "white",top: "50%",position:"absolute", zIndex:"99", border: "0:"}}
+    style={{ ...style, borderWidth: "0",right: 0,marginRight:"-2rem", backgroundColor: "white",top: "50%",position:"absolute", zIndex:"99", border: "0:"}}
     onClick={onClick}
     className="arrowRight"
   >

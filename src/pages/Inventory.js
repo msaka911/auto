@@ -5,7 +5,7 @@ import { useAlert } from 'react-alert'
 import LoadingSpinner from "../components/UI/LoadingSpinner"
 import { useSelector,useDispatch} from 'react-redux';
 import { Fragment } from 'react/cjs/react.production.min';
-import { stateActions } from '../store/store';
+import store, { stateActions } from '../store/store';
 import SearchInput, {createFilter} from 'react-search-input'
 import { useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
@@ -47,28 +47,29 @@ useEffect(()=>{
     .then(function (response) {
       dispatch(stateActions.setItems(response.data),
       setData(response.data),
-      console.log("hi")
       )})
     .catch(function (error) {
       alert.error("cannot load the page")
     })
   }
- 
   },[])
 
-useMemo(()=>{
+useEffect(()=>{
    if(count===storedData?.length){
     setCount(true)
   }
 },
-[storedData,count])
+[])
+
 
 useEffect(() => {
     // runs on location, i.e. route, change
-    dispatch(stateActions.reset())
-    setData(storedData)
+    if(storedData){
+      setCount(true)
+      setData(storedData)
+    }
     // console.log('handle route change here', location)
-  }, [location])
+  }, [location,storedData])
 
 
 useMemo(()=>{
@@ -105,15 +106,16 @@ useEffect(()=>{
 
 
 
-const page=useMemo((storedData,reachCount)=>{
+const page=useMemo((storedData)=>{
   if (data){
     console.log(data?.length)
-    return  <PaginatedItems itemsPerPage={8}  storeData={storedData} style={{display:reachCount?'block':'none'}}/>
+    return  <PaginatedItems itemsPerPage={8}  storeData={storedData} />
   }
   else{
     return null
   }
-},[storedData,reachCount])
+},[storedData])
+
 
 
 return (
@@ -152,7 +154,7 @@ return (
         </ul>
       </section> */}
       <br/>
-        {page}    
+        {reachCount?page:'none'}    
 </Fragment>
            )
 };

@@ -19,13 +19,34 @@ const MainPage = () => {
 
   const navigate=useNavigate();
 
+   //page animation------------------------------------------------------------
+   const allSections = document.querySelectorAll('section');
+   const revealSection = function (entries, observer) {
+     const [entry] = entries;
+   
+     if (!entry.isIntersecting) return;
+   
+     entry.target.classList.remove('section--hidden');
+     observer.unobserve(entry.target);
+   };
+   
+   const sectionObserver = new IntersectionObserver(revealSection, {
+     root: null,
+     threshold: 0.15,
+   });
+   
+   allSections.forEach(function (section) {
+     sectionObserver.observe(section);
+     section.classList.add('section--hidden');
+   });
+   //------------------------------------------------------------
 
 
   return (
   <Fragment>
   <header className={isMobile?classes.media:classes.welcome}>
     <h2>Welcome To</h2>
-    <h1>YST Auto Sales</h1>
+    <h1>CANLOVEADA Sales</h1>
     <img  ref={ref}  src={image}></img>
     <Button onClick={()=>{navigate('/inventory')}}>Inventory</Button>
   </header>
@@ -48,11 +69,22 @@ const MainPage = () => {
    </p>
   </section>
 
+  
+
   <section className={isMobile?classes.mediaGroup:classes.group}>
   <h2>Auto Group</h2>
   <img src={group} ></img>
   </section>
+  
 
+  <section className="section section--quote">
+      <div className="section__title">
+        <h3 className="section__header">
+          Get free quote for your car now!
+        </h3>
+      </div>
+      <button className="btn"  onClick={()=>{navigate(`/new-quote`)}}>Free Quote!</button>
+    </section>
   </Fragment>
   );
 };
