@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css";
+
 * {
   box-sizing: border-box;
 }
@@ -63,8 +65,6 @@ body {
 }
 
 
-
-
  /* .slick-prev:before, .slick-next:before  {
 
   font-size: 3rem ;
@@ -76,9 +76,14 @@ body {
   
 
 
-/* .slick-dots li button:before {
-  font-family: 'slick';
-  line-height: 20px;
-  font-size: 0.5rem !important;
-} */
+
+.pagination {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  
+}
+
 

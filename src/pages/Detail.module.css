@@ -1,0 +1,86 @@
+.detail{
+    color: black;
+}
+
+.slider{
+    margin: auto;
+    padding:auto;
+    width: 95%;
+    justify-items: center;
+    color: black;
+    margin-bottom: 2rem;
+}
+
+.slider img{
+    position: relative;
+    margin: 0 auto;
+    min-width: 60%;
+    border-radius: 0.5rem;
+}
+
+.price {
+    border-radius: 1rem;
+    padding: 0.15rem 1.1rem;
+    background-color: #1b1b1b;
+    color: white;
+    font-size: 1.4rem;
+    width: fit-content;
+    margin-bottom: 0.3rem;
+    margin-top: 0.4rem;
+    text-align: center;
+}
+
+
+.h2{
+    font-size: 2rem;
+    color: black;
+    line-height: 2rem;
+}
+
+.mediaSlider{
+    margin: auto;
+    padding:auto;
+    width: 95%;
+    justify-items: center;
+    color: black;
+    margin-bottom: 5rem;
+}
+
+.mediaSlider img{
+    position: relative;
+    margin: 0 auto;
+    max-width: 50%;
+    border-radius: 0.5rem;
+}
+
+.label{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-end;
+}
+
+.label div label {
+    font-size: 2.5rem;
+    /* justify-content: center; */
+    vertical-align: bottom;
+    margin-right: -0.8rem;
+}
+
+
+.mediaLabel{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items:flex-end;
+}
+
+.mediaLabel div {
+    font-size: 1.5rem;
+    align-items:center;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.mediaLabel div label{
+    margin-right: -0.5rem;
+}

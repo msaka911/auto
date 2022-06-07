@@ -44,6 +44,7 @@
   width:4.5rem;
   align-self: center;
   color: white;
+  white-space: nowrap;
 }
 
 .noresult h5{
@@ -144,3 +145,4 @@
   font-size: 0.8rem;
   white-space: nowrap;
 }
+
