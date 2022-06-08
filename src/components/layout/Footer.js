@@ -7,17 +7,17 @@ const Footer=()=>{
         <Fragment>
         <div className={isMobile?classes.media:classes.wrapper}>
             <div>
-                <h3>Visit Our Location</h3>
+                <h4>Visit Our Location</h4>
             </div>
             <div>
-                <h3>Contact Us</h3>
+                <h4>Contact Us</h4>
             </div>
             <div>
-                <h3>Hourse Of Operation</h3>
+                <h4>Hourse Of Operation</h4>
             </div>
         </div>
         <div>
-            <h5 style={{margin:"auto",width:"100%",color:"white", textAlign:"center"}}>All Rights reserved CANLOVEADA INC.</h5>
+            <h6 style={{margin:"auto",width:"100%",color:"white", textAlign:"center"}}>All Rights reserved CANLOVEADA INC.</h6>
         </div>
         </Fragment>
     )

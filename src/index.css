@@ -142,4 +142,6 @@ section {
   justify-content: center;
 }
 
-
+.pagination li.active a {
+  background-color: #c70000 !important;
+}

@@ -53,7 +53,6 @@ const RightArrow = ({ style, onClick }) => (
     slidesToScroll: 1,
     autoplay: false,
     drggable:true,
-    centerMode:true,
     fade: true,
     arrows: isMobile?false:true,
     prevArrow: <LeftArrow />,
@@ -69,12 +68,11 @@ const RightArrow = ({ style, onClick }) => (
     <li className={classes.item} key={id}>
       <div className={isMobile?classes.media:classes.card}>
         <header>
-          <div>
-          <h3 >{title}</h3>
-          <h5 >{mileage} KM</h5>
-          <h5 >hi</h5>
+          <div className={classes.title}>
+            <h3>{title}</h3>
+            <h5 >{mileage} KM</h5>
           </div>
-          <div className={classes.price}>${parseInt(price)}</div>
+          <h3 className={classes.price}>${parseInt(price)}</h3>
         </header>
         <div className={classes.container}>
       <Slider 
@@ -113,7 +111,6 @@ const RightArrow = ({ style, onClick }) => (
         </Slider>
         </div>
         </div>
-          <p style={{color:"white", margin:"0.1rem 1.3rem"}}>{description}</p>
           <div className={classes.actions}>
         </div>
       </div>

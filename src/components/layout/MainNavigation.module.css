@@ -53,11 +53,12 @@
   color: white;
   display: inline;
   border-radius: 1rem;
-  font-size: 0.7rem;
+  font-size: 0.95rem;
   text-align: center;
   justify-content: space-around;
   align-self: center;
-  white-space: nowrap
+  white-space: nowrap;
+  font-weight: bold;
 }
 
 
@@ -70,5 +71,14 @@
   height: 10rem;
   display: inline-block;
   background-color: rgb(34, 34, 34);
+  margin-left: 0;
+}
+
+.media h3{
+  font-size: 1.1rem;
+}
+
+.media h5{
+  font-size: 0.8rem;
 
 }

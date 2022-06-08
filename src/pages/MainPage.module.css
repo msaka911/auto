@@ -125,9 +125,10 @@ h3{
 .media img{
     position: absolute;
     top:14rem;
-    left:-3rem;
+    left:-4rem;
     align-items: center;
     opacity: 80%;
     z-index: -1;
-    max-width: 120%;
+    max-width: 115%;
+    overflow-x: hidden;
 }

@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import classes from './Detail.module.css';
-import { useSelector } from 'react-redux';
 import Slider from "react-slick";
 import { useEffect, useState } from 'react';
 import 'slick-carousel/slick/slick.css';
@@ -46,27 +45,32 @@ const Detail=()=>{
       };
     
       return(
-          <Fragment>
-        <h2 className={isMobile?classes.h2:classes.detail}>{storedData.name}</h2>
-        
-        <Slider 
-          className={isMobile?classes.mediaSlider:classes.slider}
-          {...settings} 
-          >
-          <div>
-          <img src={`data:image/jpeg;base64,${storedData.image1}`} alt="Image1" />
-          </div>
-          <div>
-          <img src={`data:image/jpeg;base64,${storedData.image2}`}  alt="Image2"/>
-          </div>
-          <div>
-          <img src={`data:image/jpeg;base64,${storedData.image3}`}  alt="Image3"/>
-          </div>
-          </Slider>
-          <div className={isMobile?classes.mediaLabel:classes.label}>
-          <label className={classes.price}>${parseInt(storedData.price)}</label>
-          <div style={{display:"flex", gap:isMobile?"0.8rem":"1.5rem"}}>
-          </div>  
+        <Fragment>
+        <div className={classes.wrapper}>
+            <h3 className={isMobile?classes.h2:classes.detail}>{storedData.name}</h3>
+            <Slider 
+            className={isMobile?classes.mediaSlider:classes.slider}
+            {...settings} 
+            >
+            <div>
+            <img src={`data:image/jpeg;base64,${storedData.image1}`} alt="Image1" />
+            </div>
+            <div>
+            <img src={`data:image/jpeg;base64,${storedData.image2}`}  alt="Image2"/>
+            </div>
+            <div>
+            <img src={`data:image/jpeg;base64,${storedData.image3}`}  alt="Image3"/>
+            </div>
+            </Slider>
+            <div className={classes.label}>
+                <div className={classes.wrap}>
+                    <h5 className={classes.detail}>Mileage: {storedData.mileage} KM</h5>
+                    <label className={classes.price}>${parseInt(storedData.price)}</label>
+                </div>
+                <text className={classes.text}>{storedData.description}</text>
+            <div style={{display:"flex", gap:isMobile?"0.8rem":"1.5rem"}}>
+            </div>  
+            </div>
           </div>
           </Fragment>
       )

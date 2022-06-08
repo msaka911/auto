@@ -1,6 +1,15 @@
 .detail{
-    color: black;
+    color: white;
 }
+
+
+.wrapper{
+    width: 85%;
+    align-content: center;
+    margin:0 auto;
+
+}
+
 
 .slider{
     margin: auto;
@@ -14,7 +23,8 @@
 .slider img{
     position: relative;
     margin: 0 auto;
-    min-width: 60%;
+    height: 25rem;
+    width: 36rem;
     border-radius: 0.5rem;
 }
 
@@ -49,38 +59,26 @@
 .mediaSlider img{
     position: relative;
     margin: 0 auto;
-    max-width: 50%;
+    width: 100%;
     border-radius: 0.5rem;
 }
 
 .label{
     display: flex;
-    justify-content: space-between;
-    align-items:flex-end;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.label div label {
-    font-size: 2.5rem;
-    /* justify-content: center; */
-    vertical-align: bottom;
-    margin-right: -0.8rem;
+.text{
+    color: white;
+    margin-top: 1rem;
 }
 
 
-.mediaLabel{
+.wrap{
     display: flex;
-    width: 100%;
+    flex-direction: row;
+    align-items: baseline;
     justify-content: space-between;
-    align-items:flex-end;
-}
-
-.mediaLabel div {
-    font-size: 1.5rem;
-    align-items:center;
-    vertical-align: middle;
-    text-align: center;
-}
-
-.mediaLabel div label{
-    margin-right: -0.5rem;
+    width: 100%;
 }

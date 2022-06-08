@@ -10,8 +10,8 @@ const MainNavigation = () => {
   return (
     <header className={isMobile?classes.media:classes.header}>
       <div className={classes.top}>
-      <div className={classes.logo}>CANLOVEADA &nbsp;  AUTO</div>
-      <div className={classes.contact}>Contact Info</div>
+      <h3 className={classes.logo}>CANLOVEADA &nbsp;  AUTO</h3>
+      <h5 className={classes.contact}>Contact Info</h5>
       </div>
       <nav className={classes.nav}>
         <ul>
