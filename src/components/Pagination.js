@@ -31,7 +31,8 @@ useEffect(() => {
     );
     setItemOffset(newOffset);
   };
-
+  
+  console.log(currentItems)
   return (
     <>
      <div className="page">
@@ -44,9 +45,9 @@ useEffect(() => {
             brand={product.brand}
             mileage={product.mileage}
             description={product.description}
-            image1={product.img[0].data}
-            image2={product.img[1].data}
-            image3={product.img[2].data}
+            image1={product.img[0].img0.data}
+            image2={product.img[1].img1.data}
+            image3={product.img[2].img2.data}
           />
         ))}
     </div>

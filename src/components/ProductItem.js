@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { stateActions } from '../store/store';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import {Buffer} from 'buffer';
 
 import React, {useState } from "react";
 import Slider from "react-slick";
@@ -14,7 +15,13 @@ import { useNavigate } from 'react-router-dom';
 
 const ProductItem = (props) => {
   const { title, price, description,image1,image2,image3,id,mileage} = props;
-  console.log(props)
+  
+  
+  const no1=new Buffer(image1.data).toString('base64')
+  const no2=new Buffer(image2.data).toString('base64')
+  const no3=new Buffer(image3.data).toString('base64')
+
+  
   const [nav1,setSlider1]=useState("")
   const [nav2,setSlider2]=useState("")
   
@@ -83,13 +90,13 @@ const RightArrow = ({ style, onClick }) => (
           asNavFor={nav2}
           ref={slider => (setSlider1(slider))}>
           <div>
-          <img src={`data:image/jpeg;base64,${image1}`} alt="Image1" onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
+          <img src={`data:image/jpeg;base64,${no1}`} alt="Image1" onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
           </div>
           <div>
-          <img src={`data:image/jpeg;base64,${image2}`}  alt="Image2" onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
+          <img src={`data:image/jpeg;base64,${no2}`}  alt="Image2" onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
           </div>
           <div>
-          <img src={`data:image/jpeg;base64,${image3}`}  alt="Image3"onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
+          <img src={`data:image/jpeg;base64,${no3}`}  alt="Image3"onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
           </div>
           </Slider>
         <div className={classes.slider2}>
@@ -102,13 +109,13 @@ const RightArrow = ({ style, onClick }) => (
           arrows={false}
         >          
         <div>
-        <img src={`data:image/jpeg;base64,${image1}`}  alt="Image1"/>
+        <img src={`data:image/jpeg;base64,${no1}`}  alt="Image1"/>
         </div>
         <div>
-        <img src={`data:image/jpeg;base64,${image2}`}  alt="Image2"/>
+        <img src={`data:image/jpeg;base64,${no2}`}  alt="Image2"/>
         </div>
         <div>
-        <img src={`data:image/jpeg;base64,${image3}`}  alt="Image3"/>
+        <img src={`data:image/jpeg;base64,${no3}`}  alt="Image3"/>
         </div>
         </Slider>
         </div>

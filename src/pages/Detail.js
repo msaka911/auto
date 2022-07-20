@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { isMobile } from 'react-device-detect';
 import { useAlert } from 'react-alert'
 import { Fragment } from 'react/cjs/react.production.min';
+import {Buffer} from 'buffer';
 
 const Detail=()=>{
     const [storedData,setData]=useState([]);
@@ -43,7 +44,9 @@ const Detail=()=>{
         arrows:isMobile?false:true,
         drggable:true
       };
-    
+     
+
+      
       return(
         <Fragment>
         <div className={classes.wrapper}>
@@ -52,7 +55,18 @@ const Detail=()=>{
             className={isMobile?classes.mediaSlider:classes.slider}
             {...settings} 
             >
-            <div>
+            {storedData.img.map((image,index)=>{
+                
+                var firstKey = Object.keys(image)[0];
+                var data=image[firstKey].data
+                 var base64=new Buffer(data).toString('base64')
+                 return(
+                    <div>
+                    <img src={`data:image/jpeg;base64,${base64}`} alt={`Image${index}`} />
+                    </div>
+                 )
+            })}
+            {/* <div>
             <img src={`data:image/jpeg;base64,${storedData.img[0].data}`} alt="Image1" />
             </div>
             <div>
@@ -72,7 +86,7 @@ const Detail=()=>{
             </div>
             <div>
             <img src={`data:image/jpeg;base64,${storedData.img[6].data}`}  alt="Image6"/>
-            </div>
+            </div> */}
             </Slider>
             <div className={classes.label}>
                 <div className={classes.wrap}>
