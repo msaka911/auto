@@ -44,9 +44,9 @@ useEffect(() => {
             brand={product.brand}
             mileage={product.mileage}
             description={product.description}
-            image1={product.image1}
-            image2={product.image2}
-            image3={product.image3}
+            image1={product.img[0].data}
+            image2={product.img[1].data}
+            image3={product.img[2].data}
           />
         ))}
     </div>
