@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import PaginatedItems from '../components/Pagination';
 import { useNavigate } from 'react-router-dom';
-
+import { Buffer } from 'buffer';
 const axios = require('axios');
 
 
@@ -126,10 +126,15 @@ return (
      <div style={{display:reachCount?'block':'none'}}>
         <SearchInput className={isMobile?classes.media:classes.serachinput}  onFocus={()=>setFocus(true)} onChange={(input)=>setTerm(input)} />
         {(focused&&filteredData.length>0)?(filteredData.map(items => {
+          var firstKey = Object.keys(items.img[0])[0]
+          console.log(firstKey)
+          var data=items.img[0][firstKey].data.data
+          var base64=new Buffer(data).toString('base64')
+
           return (
             <div className= {isMobile?classes.mediaSearchBar:classes.searchBar} key={items._id} onClick={()=> navigate(`/details/${items._id}`)}> 
               <h5 >{items.name}</h5>
-              <img src={`data:image/jpeg;base64,${items.img[0].data}`}  alt="Image1"/>
+              <img src={`data:image/jpeg;base64,${base64}`}  alt="Image1"/>
               {/* <h5 >{items.brand}</h5> */}
               <h5 >${items.price}</h5>
             </div>
