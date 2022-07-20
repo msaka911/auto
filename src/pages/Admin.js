@@ -15,6 +15,9 @@ const Admin=()=>{
     const name=useRef("");
     const item=useRef("");
     const mileage=useRef("")
+    const drivetrain=useRef("")
+    const color=useRef("")
+
     const alert=useAlert();
 
     const navigate=useNavigate();
@@ -38,7 +41,8 @@ const Admin=()=>{
         formData.append('description',description.current.value)
         formData.append('name',name.current.value)
         formData.append('mileage',mileage.current.value)
-         
+        formData.append('drivetrain',drivetrain.current.value)
+        formData.append('color',color.current.value)
       
         const config = {
             headers: { Authorization: `Bearer ${token}`,
@@ -56,6 +60,8 @@ const Admin=()=>{
             mileage.current.value="";
             description.current.value="";
             price.current.value="";
+            color.current.value="";
+            drivetrain.current.value="";
 
         }   
         ).catch(function(error){
@@ -68,7 +74,7 @@ const Admin=()=>{
         const axios = require('axios');
         const deletedItem=item.current.value
         // axios.post(`http://localhost:3001/deleteItem?name=${deletedItem}`,{},
-        axios.post(`https://mybackend1.herokuapp.com/auto/deleteItem?name=${deletedItem}`,{},
+        axios.post(`https://mybackend1.herokuapp.com/auto/deleteItem?uid=${deletedItem}`,{},
 
         {headers: {Authorization: `Bearer ${token}`}}
         ).then((response)=>{
@@ -95,7 +101,7 @@ const Admin=()=>{
         <form className={classes.card} onSubmit={uploadFile}>
          <h3>Upload</h3>
             <div className={isMobile?classes.media:classes.wrapper}>
-            <input type="file" multiple ref={files}/>
+           
             <div>
                 <label>Price</label>
                 <input type="number" min="0" ref={price}/>
@@ -109,17 +115,26 @@ const Admin=()=>{
                 <input type="number" min="0" ref={mileage}/>
             </div>
             <div>
+                <label>Drivetrain</label>
+                <input type="text"  ref={drivetrain}/>
+            </div>
+            <div>
+                <label>Color</label>
+                <input type="text"  ref={color}/>
+            </div>
+            </div>
+         <div>
                 <label>Description</label>
                 <textarea rows={3} type="text"ref={description} />
-            </div>
-            </div>
+         </div>
+         <input type="file" multiple ref={files}/>
         <Button>Submit</Button>
         </form>
      <form className={classes.card} onSubmit={deleteItem}>
             <h3>Delete inventory</h3>
                 <div className={classes.wrapper}>
                    <div>
-                       <label>Name</label>
+                       <label>UID</label>
                        <input type="text" ref={item}/>
                    </div>
                 </div>

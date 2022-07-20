@@ -53,19 +53,37 @@ const Detail=()=>{
             {...settings} 
             >
             <div>
-            <img src={`data:image/jpeg;base64,${storedData.image1}`} alt="Image1" />
+            <img src={`data:image/jpeg;base64,${storedData.img[0].data}`} alt="Image1" />
             </div>
             <div>
-            <img src={`data:image/jpeg;base64,${storedData.image2}`}  alt="Image2"/>
+            <img src={`data:image/jpeg;base64,${storedData.img[1].data}`}  alt="Image2"/>
             </div>
             <div>
-            <img src={`data:image/jpeg;base64,${storedData.image3}`}  alt="Image3"/>
+            <img src={`data:image/jpeg;base64,${storedData.img[2].data}`}  alt="Image3"/>
+            </div>
+            <div>
+            <img src={`data:image/jpeg;base64,${storedData.img[3].data}`}  alt="Image4"/>
+            </div>
+            <div>
+            <img src={`data:image/jpeg;base64,${storedData.img[4].data}`}  alt="Image5"/>
+            </div>
+            <div>
+            <img src={`data:image/jpeg;base64,${storedData.img[5].data}`}  alt="Image6"/>
+            </div>
+            <div>
+            <img src={`data:image/jpeg;base64,${storedData.img[6].data}`}  alt="Image6"/>
             </div>
             </Slider>
             <div className={classes.label}>
                 <div className={classes.wrap}>
                     <h5 className={classes.detail}>Mileage: {storedData.mileage} KM</h5>
-                    <label className={classes.price}>${parseInt(storedData.price)}</label>
+                    <div>
+                        <label className={classes.price}>${parseInt(storedData.price)}</label>
+                        <label className={classes.subtitle}>Price does not include taxes and licensing fees</label>
+                    </div>
+                    <label className={classes.detail}>Drivetrain:   {storedData.drivetrain} </label>
+                    <label className={classes.detail}>Transmission:   Automatic</label>
+                    <label className={classes.detail}>Exterior Colour:  {storedData.color} </label>
                 </div>
                 <text className={classes.text}>{storedData.description}</text>
             <div style={{display:"flex", gap:isMobile?"0.8rem":"1.5rem"}}>

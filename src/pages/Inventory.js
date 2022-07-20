@@ -129,7 +129,7 @@ return (
           return (
             <div className= {isMobile?classes.mediaSearchBar:classes.searchBar} key={items._id} onClick={()=> navigate(`/details/${items._id}`)}> 
               <h5 >{items.name}</h5>
-              <img src={`data:image/jpeg;base64,${items.image1}`}  alt="Image1"/>
+              <img src={`data:image/jpeg;base64,${items.img[0].data}`}  alt="Image1"/>
               {/* <h5 >{items.brand}</h5> */}
               <h5 >${items.price}</h5>
             </div>

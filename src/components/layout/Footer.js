@@ -16,6 +16,7 @@ const Footer=()=>{
             </div>
             <div className={classes.align}>
                 <h4>Hours Of Operation</h4>
+                <Button  sx={{fontSize:"1rem",fontWeight:"bold"}}>MON-SAT 9:00am-6:00pm</Button>
             </div>
         </div>
         <div>

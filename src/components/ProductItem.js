@@ -13,7 +13,7 @@ import { isMobile } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 
 const ProductItem = (props) => {
-  const { title, price, description,image1,image2,image3,id,mileage} = props;
+  const { title, price, description,img,id,mileage} = props;
   
   const [nav1,setSlider1]=useState("")
   const [nav2,setSlider2]=useState("")
@@ -67,12 +67,14 @@ const RightArrow = ({ style, onClick }) => (
   return (
     <li className={classes.item} key={id}>
       <div className={isMobile?classes.media:classes.card}>
-        <header>
+        <header className={classes.header}>
           <div className={classes.title}>
             <h3>{title}</h3>
-            <h5 >{mileage} KM</h5>
+            <h5 >Mileage: &nbsp; {mileage} KM</h5>
+            <label className={classes.subtitle}>Price does not include taxes and licensing fees.</label>
+            <label className={classes.transmission}>Transmission: &nbsp; Automatic</label>
           </div>
-          <h3 className={classes.price}>${parseInt(price)}</h3>
+          <h3 className={classes.price}>Price: &nbsp; ${parseInt(price)}</h3>
         </header>
         <div className={classes.container}>
       <Slider 
@@ -81,13 +83,13 @@ const RightArrow = ({ style, onClick }) => (
           asNavFor={nav2}
           ref={slider => (setSlider1(slider))}>
           <div>
-          <img src={`data:image/jpeg;base64,${image1}`} alt="Image1" onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
+          <img src={`data:image/jpeg;base64,${img[0].data}`} alt="Image1" onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
           </div>
           <div>
-          <img src={`data:image/jpeg;base64,${image2}`}  alt="Image2" onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
+          <img src={`data:image/jpeg;base64,${img[1].data}`}  alt="Image2" onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
           </div>
           <div>
-          <img src={`data:image/jpeg;base64,${image3}`}  alt="Image3"onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
+          <img src={`data:image/jpeg;base64,${img[2].data}`}  alt="Image3"onLoad={()=>dispatch(stateActions.increament())} onClick={()=> navigate(`/details/${id}`)}/>
           </div>
           </Slider>
         <div className={classes.slider2}>
@@ -100,13 +102,13 @@ const RightArrow = ({ style, onClick }) => (
           arrows={false}
         >          
         <div>
-        <img src={`data:image/jpeg;base64,${image1}`}  alt="Image1"/>
+        <img src={`data:image/jpeg;base64,${img[0].data}`}  alt="Image1"/>
         </div>
         <div>
-        <img src={`data:image/jpeg;base64,${image2}`}  alt="Image2"/>
+        <img src={`data:image/jpeg;base64,${img[1].data}`}  alt="Image2"/>
         </div>
         <div>
-        <img src={`data:image/jpeg;base64,${image3}`}  alt="Image3"/>
+        <img src={`data:image/jpeg;base64,${img[2].data}`}  alt="Image3"/>
         </div>
         </Slider>
         </div>

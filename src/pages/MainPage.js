@@ -15,12 +15,15 @@ import { isMobile } from 'react-device-detect';
 
 const MainPage = () => {
   const { ref } = useParallax({ speed: (isMobile?-10:-40) })
- 
+  
+  
 
   const navigate=useNavigate();
 
    //page animation------------------------------------------------------------
    const allSections = document.querySelectorAll('section');
+
+   
    const revealSection = function (entries, observer) {
      const [entry] = entries;
    
@@ -50,7 +53,7 @@ const MainPage = () => {
     <img  ref={ref}  src={image}></img>
     <Button onClick={()=>{navigate('/inventory')}}>Inventory</Button>
   </header>
-  <section className={classes.section}>
+  <section className={[classes.section,"bottom"].join(" ")}>
     <Card title="Finance" description="Our best advisors" button="Apply for Finance">
       <img src={finance}/>
     </Card>
@@ -61,7 +64,7 @@ const MainPage = () => {
     <img src={warranty}/>
     </Card>
   </section>
-  <section className={isMobile?classes.mediaSection:classes.introduction}>
+  <section className={isMobile?[classes.mediaSection,"bottom"].join(" "):[classes.introduction,"bottom"].join(" ")}>
    <h2>BUY WITH CONFIDENCE</h2>
    <p>With our amazing collection on the lot, we guarantee you’ll be extremely satisfied with your choices. Come and test drive one now. 
       Sometimes we offer an incredible discount on a select vehicle. Right now, that includes our extensive Vehicle collection. Whether you’re 
@@ -71,13 +74,13 @@ const MainPage = () => {
 
   
 
-  <section className={isMobile?classes.mediaGroup:classes.group}>
+  <section className={isMobile?[classes.mediaGroup,"bottom"].join(" "):[classes.group,"bottom"].join(" ")}>
   <h2>Auto Group</h2>
   <img src={group} ></img>
   </section>
   
 
-  <section className="section section--quote">
+  <section className="section section--quote section--last">
       <div className="section__title">
         <h3 className="section__header">
           Get free quote for your car now!

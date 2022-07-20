@@ -132,3 +132,7 @@ h3{
     max-width: 115%;
     overflow-x: hidden;
 }
+
+.last{
+    border: none !important;
+}
