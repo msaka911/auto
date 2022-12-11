@@ -1,0 +1,25 @@
+.button{
+    color:black;
+    padding: 0.4rem  0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor:pointer;
+    text-align: center;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    border-radius: 0.5rem;
+    border: 0rem;
+    margin-top: 0.2rem;
+}
+
+.button:hover{
+    background-color: rgb(197, 0, 0);
+    color:rgb(255, 255, 255);
+    transition: all ease-out 0.3s;
+
+}
+
+.button:focus{
+    background-color: rgb(197, 0, 0);
+    color:rgb(255, 255, 255);
+
+}

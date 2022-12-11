@@ -151,5 +151,14 @@ body {
 }
 
 .pagination li.active a {
-  background-color: #c70000 !important;
+  background-color: #5f5f5f !important;
+}
+
+.page-link{
+  color:black;
+  font-weight: 600;
+}
+
+.slick-dots li.slick-active button:before {
+  color:orange !important;
 }

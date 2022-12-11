@@ -14,7 +14,7 @@ import { isMobile } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 
 const ProductItem = (props) => {
-  const { title, price, description,image1,image2,image3,id,mileage} = props;
+  const { make,model,transmission, price,image1,image2,image3,id,mileage,year,bodyStyle,exteriorColor} = props;
   
   
   const no1=new Buffer(image1.data).toString('base64')
@@ -32,7 +32,7 @@ const ProductItem = (props) => {
 
 const LeftArrow = ({ style, onClick }) => (
 <button
-  style={{ ...style,borderWidth: "0", left: 0, marginLeft:"-1rem", backgroundColor: "white",top: "50%",position:"absolute", zIndex:"99", border: "0:" }}
+  style={{ ...style,borderWidth: "0", left: 0, marginLeft:"-3rem", backgroundColor: "white",top: "50%",position:"absolute", zIndex:"99", border: "0:" }}
   onClick={onClick}
   className="arrowLeft"
 >
@@ -42,7 +42,7 @@ const LeftArrow = ({ style, onClick }) => (
 
 const RightArrow = ({ style, onClick }) => (
   <button
-    style={{ ...style, borderWidth: "0",right: 0,marginRight:"-2rem", backgroundColor: "white",top: "50%",position:"absolute", zIndex:"99", border: "0:"}}
+    style={{ ...style, borderWidth: "0",right: 0,marginRight:"-3rem", backgroundColor: "white",top: "50%",position:"absolute", zIndex:"99", border: "0:"}}
     onClick={onClick}
     className="arrowRight"
   >
@@ -75,14 +75,28 @@ const RightArrow = ({ style, onClick }) => (
     <li className={classes.item} key={id}>
       <div className={isMobile?classes.media:classes.card}>
         <header className={classes.header}>
-          <div className={classes.title}>
-            <h3>{title}</h3>
-            <h5 >Mileage: &nbsp; {mileage} KM</h5>
+          <label className={classes.priceTag}>{make+"  "} {model}</label>
+          <div className={classes.priceWrap}>
+            <label className={classes.price}>Price: &nbsp;  <label className={classes.priceTag}>CAD{price}</label></label>
             <label className={classes.subtitle}>Price does not include taxes and licensing fees.</label>
-            <label className={classes.transmission}>Transmission: &nbsp; Automatic</label>
           </div>
-          <h3 className={classes.price}>Price: &nbsp; ${parseInt(price)}</h3>
         </header>
+        <div className={classes.title}>
+          <div className={classes.left}>
+             <label >Mileage:  &nbsp; {mileage} KM</label>
+             <label >Transmission:  &nbsp; {transmission}</label>
+             <label >Exterior Color:  &nbsp; {exteriorColor}</label>
+
+          </div>
+
+          <div className={classes.right}>
+            <label >Year:  &nbsp; {year}</label>
+            <label >Body Style: &nbsp;{bodyStyle}</label>
+          </div>
+
+
+
+          </div>
         <div className={classes.container}>
       <Slider 
           className={isMobile?classes.slider:null}

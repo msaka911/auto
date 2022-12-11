@@ -7,16 +7,24 @@ import { useRef} from "react"
 import { stateActions } from "../store/store"
 import { useNavigate } from "react-router-dom"
 import { isMobile } from "react-device-detect"
+import { DriveEtaRounded } from "@mui/icons-material"
 
 const Admin=()=>{
     const files=useRef("")
+    const id=useRef("")
+
     const price=useRef(0)
     const description=useRef("");
-    const name=useRef("");
-    const item=useRef("");
+    const model=useRef("");
+    const make=useRef("");
     const mileage=useRef("")
+    const engine=useRef("")
     const drivetrain=useRef("")
-    const color=useRef("")
+    const exteriorColor=useRef("")
+    const interiorColor=useRef("")
+    const bodyStyle=useRef("")
+    const year=useRef("")
+    const transimission=useRef("")
 
     const alert=useAlert();
 
@@ -31,50 +39,70 @@ const Admin=()=>{
         const axios = require('axios');
         const formData = new FormData();
         const file = files.current.files
+        const count=files.current.files.length
+
         formData.append('images',file)
         
         Array.from(file).forEach((element)=>{
             formData.append('images',element)
         })
-
+        
         formData.append('price',price.current.value)
         formData.append('description',description.current.value)
-        formData.append('name',name.current.value)
+        formData.append('model',model.current.value)
+        formData.append('make',make.current.value)
+        formData.append('transimission',mileage.current.value)
         formData.append('mileage',mileage.current.value)
         formData.append('drivetrain',drivetrain.current.value)
-        formData.append('color',color.current.value)
-      
+        formData.append('exteriorColor',exteriorColor.current.value)
+        formData.append('interiorColor',interiorColor.current.value)
+        formData.append('bodyStyle',bodyStyle.current.value)
+        formData.append('year',year.current.value)
+        formData.append('engine',engine.current.value)
+        formData.append('description',description.current.value)
+
         const config = {
             headers: { Authorization: `Bearer ${token}`,
                       },
             
         };
-        
-        axios.post('https://mybackend1.herokuapp.com/auto/upload',
-        // axios.post('http://localhost:3001/upload',
-          formData,
-          config
-        ).then((response)=>{
-            alert.show("Images successfully uploaded")
-            name.current.value="";
-            mileage.current.value="";
-            description.current.value="";
-            price.current.value="";
-            color.current.value="";
-            drivetrain.current.value="";
+        if(count==7&&price.current.value&&model.current.value&&make.current.value&&mileage.current.value&&drivetrain.current.value&&exteriorColor.current.value&&interiorColor.current.value&&engine.current.value&&year.current.value&&bodyStyle.current.value&&transimission.current.value&&description.current.value&&engine.current.value)
+        {
+            // axios.post('https://mybackend1.herokuapp.com/auto/upload',
+            axios.post('http://localhost:3000/auto/upload',
+              formData,
+              config
+            ).then((response)=>{
+                alert.show("Images successfully uploaded")
+                make.current.value="";
+                model.current.value="";
+                transimission.current.value="";
+                mileage.current.value="";
+                description.current.value="";
+                price.current.value="";
+                exteriorColor.current.value="";
+                interiorColor.current.value="";
+                drivetrain.current.value="";
+                engine.current.value="";
+                description.current.value="";
+            }   
+            ).catch(function(error){
+                alert.error(error.response.data)
+            })
+        }
+        else{
+            alert.error("Please fill all the fields")
+        }
 
-        }   
-        ).catch(function(error){
-            alert.error(error.response.data)
-        })
     }
 
     const deleteItem=(event)=>{
         event.preventDefault();
         const axios = require('axios');
-        const deletedItem=item.current.value
+        const deletedItem=id.current.value
         // axios.post(`http://localhost:3001/deleteItem?name=${deletedItem}`,{},
-        axios.post(`https://mybackend1.herokuapp.com/auto/deleteItem?uid=${deletedItem}`,{},
+        //`https://mybackend1.herokuapp.com/auto/deleteItem/${deletedItem}`
+        axios.post(`http://localhost:3000/auto/deleteItem?id=${deletedItem}`,{},
 
         {headers: {Authorization: `Bearer ${token}`}}
         ).then((response)=>{
@@ -107,8 +135,12 @@ const Admin=()=>{
                 <input type="number" min="0" ref={price}/>
             </div>
             <div>
-                <label>Name</label>
-                <input type="text" ref={name}/>
+                <label>Make</label>
+                <input type="text" ref={make}/>
+            </div>
+            <div>
+                <label>Model</label>
+                <input type="text" ref={model}/>
             </div>
             <div>
                 <label>Mileage</label>
@@ -119,8 +151,28 @@ const Admin=()=>{
                 <input type="text"  ref={drivetrain}/>
             </div>
             <div>
-                <label>Color</label>
-                <input type="text"  ref={color}/>
+                <label>transimission</label>
+                <input type="text"  ref={transimission}/>
+            </div>
+            <div>
+                <label>Body Style</label>
+                <input type="text"  ref={bodyStyle}/>
+            </div>
+            <div>
+                <label>Exterior Color</label>
+                <input type="text"  ref={exteriorColor}/>
+            </div>
+            <div>
+                <label>Interior Color</label>
+                <input type="text"  ref={interiorColor}/>
+            </div>
+            <div>
+                <label>Manufactured Year</label>
+                <input type="year"  ref={year}/>
+            </div>
+            <div>
+                <label>Engine</label>
+                <input type="text"  ref={engine}/>
             </div>
             </div>
          <div>
@@ -134,8 +186,8 @@ const Admin=()=>{
             <h3>Delete inventory</h3>
                 <div className={classes.wrapper}>
                    <div>
-                       <label>UID</label>
-                       <input type="text" ref={item}/>
+                       <label>Id</label>
+                       <input type="text" ref={id}/>
                    </div>
                 </div>
         <Button>Submit</Button>

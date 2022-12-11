@@ -13,13 +13,17 @@ function PaginatedItems({ itemsPerPage}) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
-  const storeData=useSelector(state=>state.items)
 
+
+  const storeData=useSelector(state=>state.items)
+  
 
 useEffect(() => {
     // Fetch items from another resources.
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(storeData?.slice(itemOffset, endOffset));
+
+
     setPageCount(Math.ceil(storeData?.length / itemsPerPage));
   }, [itemOffset, itemsPerPage,storeData]);
 
@@ -32,22 +36,25 @@ useEffect(() => {
     setItemOffset(newOffset);
   };
   
-  console.log(currentItems)
   return (
     <>
      <div className="page">
       {currentItems?.map((product) => (
             <ProductItem
-            key={product._id}
+            key={product.uid}
             id={product._id}
-            title={product.name}
             price={product.price}
-            brand={product.brand}
+            model={product.model}
+            year={product.year}
+            make={product.make}
             mileage={product.mileage}
             description={product.description}
             image1={product.img[0].img0.data}
             image2={product.img[1].img1.data}
             image3={product.img[2].img2.data}
+            transmission={product.transmission}
+            bodyStyle={product.bodyStyle}
+            exteriorColor={product.exteriorColor}
           />
         ))}
     </div>
@@ -57,10 +64,11 @@ useEffect(() => {
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="<"
+        nextLabel=">"
         pageClassName="page-item"
         pageLinkClassName="page-link"
-        previousClassName="page-item"
+        previousClassName="pageItem"
         previousLinkClassName="page-link"
         nextClassName="page-item"
         nextLinkClassName="page-link"
@@ -70,6 +78,7 @@ useEffect(() => {
         containerClassName="pagination"
         activeClassName="active"
         renderOnZeroPageCount={null}
+
       />
     </>
   );

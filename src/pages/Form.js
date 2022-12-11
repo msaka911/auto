@@ -1,4 +1,4 @@
-import { Fragment, useRef,useState } from 'react';
+import { Fragment, useRef,useState,useEffect } from 'react';
 import { useAlert } from 'react-alert'
 
 import Select from 'react-select'
@@ -11,6 +11,11 @@ import classes from './Form.module.css';
 import validator from 'validator';
 
 const Form = (props) => {
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 //------------options for select------------
   const animatedComponents = makeAnimated();
   const options = [
@@ -24,26 +29,34 @@ const Form = (props) => {
 //----------------------------------------
 
   const alert = useAlert()
-  const nameInputRef = useRef();
+  const makeInputRef = useRef();
+  const modelInputRef = useRef();
+  const exteriorColor=useRef()
+  const interorColor=useRef()
+  const bodyStyle=useRef()
+  const descriptionRef=useRef()
   const contactRef=useRef();
   const addressRef=useRef();
-  const appointmentRef=useRef(" ");
   const distance=useRef(0);
   const brand=useRef("")
   const year=useRef("")
   const vin=useRef("")
 
 
+
   function submitFormHandler(event) { 
     event.preventDefault();
     const axios = require('axios');
-    const enteredName = nameInputRef.current.value;
+    const enteredMake = makeInputRef.current.value;
+    const enteredModel = modelInputRef.current.value;
+    const enteredExteriorColor = exteriorColor.current.value;
+    const enteredInteriorColor = interorColor.current.value;
+    const enteredBodyStyle = bodyStyle.current.value;
     const enteredContact=contactRef.current.value;
     const enteredAddress=addressRef.current.value;
-    const enteredBrand=brand.current.value
     const enteredYear=year.current.value
-    const enteredAppointment=appointmentRef.current.value
     const enteredVin=vin.current.value
+    const enteredDescription=descriptionRef.current.value
 
     //--------------check email, zip code, phone number---------------------//
 
@@ -64,24 +77,30 @@ const Form = (props) => {
     }
     // if(validator.isMobilePhone(enteredContact,['en-CA'])&&validator.isEmail(enteredEmail)){
     //     axios.post('https://mybackend1.herokuapp.com/appointment',{
-    //       name: enteredName,
+    //       make: enteredMake,
+    //       model:enteredModel,
+    //       bodyStyle:enteredBodystyle,
+    //       exteriorColor: enteredExteriorColor,
+  //         interorColor:enteredInteriorColor,
+  //         description:enteredDescription,
     //       contact:enteredContact,
     //       address:enteredAddress,
-    //       brand: enteredBrand,
     //       vin:enteredVin,
     //       mileage:enteredDistance,
-    //       manufacture:enteredYear,
-    //       appointment:enteredAppointment
+    //       year:enteredYear,
     //     })
     //     .then(function (response) {
     //     alert.show("Thanks! \n We will process your request asap")
-    //     document.getElementById('name').value="";
+    //     document.getElementById('make').value="";
+    //     document.getElementById('model').value="";
+    //     document.getElementById('exteriorColor').value=""
+    //     document.getElementById('interiorColor').value=""
+    //     document.getElementById('bodystyle').value=""
     //     document.getElementById('contact').value="";
     //     document.getElementById('address').value=""
     //     document.getElementById('vin').value=""
     //     document.getElementById('mileage').value=""
-    //     document.getElementById('brand').value=""
-    //     document.getElementById('appointment').value=""
+    //     document.getElementById('description').value=""
     //     })
     //     .catch(function (error) {
     //       alert.error("cannot send the data")
@@ -101,8 +120,24 @@ const Form = (props) => {
           onSubmit={submitFormHandler}
         >
           <div className={classes.control}>
-            <label htmlFor='name'>Name</label>
-            <input type='text' placeholder='Name' id='name' ref={nameInputRef} />
+            <label htmlFor='name'>Make</label>
+            <input type='text' placeholder='Make' id='make' ref={makeInputRef} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor='name'>Model</label>
+            <input type='text' placeholder='Model' id='model' ref={modelInputRef} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor='name'>Body Style</label>
+            <input type='text' placeholder='Body Style' id='bodystyle' ref={bodyStyle} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor='name'>Exterior Color</label>
+            <input type='text' placeholder='Exterior Color' id='exteriorColor' ref={exteriorColor} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor='name'>Interior Color</label>
+            <input type='text' placeholder='Interior Color' id='ineteriorcolor' ref={interorColor} />
           </div>
           <div className={classes.control}>
             <label htmlFor='contact'>Contact</label>
@@ -120,13 +155,6 @@ const Form = (props) => {
           type="number"
           min="0"
           ref={distance}
-            />
-         </label>
-         <label>Brand/Model
-         <input
-          id="brand"
-          type="text"
-          ref={brand}
             />
          </label>
          <label>Manufactured Year
@@ -152,8 +180,8 @@ const Form = (props) => {
             <input  className={classes.postal} type='text' placeholder='Zip Code' id='address' ref={addressRef} />
           </div>
           <div className={classes.control}>
-            <label htmlFor='appointment'>Vehicle Detail</label>
-            <textarea type='text' rows={3} placeholder='Detail' id='appointment' ref={appointmentRef} />
+            <label htmlFor='description'>Vehicle Detail</label>
+            <textarea type='text' rows={3} placeholder='Detail' id='description' ref={descriptionRef} />
           </div>
           <div className={classes.actions}>
             <button onClick={submitFormHandler} className='btn'>Submit</button>
