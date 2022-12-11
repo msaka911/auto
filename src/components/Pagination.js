@@ -41,7 +41,7 @@ useEffect(() => {
      <div className="page">
       {currentItems?.map((product) => (
             <ProductItem
-            key={product.uid}
+            key={product._id}
             id={product._id}
             price={product.price}
             model={product.model}
@@ -55,6 +55,7 @@ useEffect(() => {
             transmission={product.transmission}
             bodyStyle={product.bodyStyle}
             exteriorColor={product.exteriorColor}
+            drivetrain={product.drivetrain}
           />
         ))}
     </div>

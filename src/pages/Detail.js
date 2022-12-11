@@ -19,8 +19,8 @@ const Detail=()=>{
     const alert=useAlert();
     
     useEffect(()=>{
-        axios.get(`http://localhost:3000/auto/details/${getId}`)
-        // axios.get(`https://mybackend1.herokuapp.com/auto/details/${getId}`)
+        // axios.get(`http://localhost:3000/auto/details/${getId}`)
+        axios.get(`https://mybackend1.herokuapp.com/auto/details/${getId}`)
         .then(function (response) {
             setData(response.data)
             })
@@ -70,7 +70,7 @@ const Detail=()=>{
             </Slider>
             <div className={classes.label}>
                 <div className={classes.wrap}>
-                    <h5 className={classes.detail}><h5>Mileage:</h5> {storedData.mileage} KM</h5>
+                    <label className={classes.detail}><h5>Mileage:</h5> {storedData.mileage} KM</label>
                     <label className={classes.detail}><h5>Manufacture Year:</h5>  {storedData.year} </label>
                     <label className={classes.detail}><h5>Body Style:</h5>  {storedData.bodyStyle} </label>
                     <label className={classes.detail}><h5>Drivetrain:</h5>   {storedData.drivetrain} </label>
@@ -78,8 +78,9 @@ const Detail=()=>{
                     <label className={classes.detail}><h5>Exterior Colour:</h5>  {storedData.exteriorColor} </label>
                     <label className={classes.detail}><h5>Interior Colour:</h5>  {storedData.interiorColor} </label>
                     <label className={classes.detail}><h5>Engine:</h5>  {storedData.engine} </label>
-                    <div>
-                        <label className={classes.price}>{storedData.price}</label>
+                    <div style={{display:"flex",flexDirection:"column",alignItems:"flex-start"}}>
+                        <h5 style={{color:"white"}}>Price:</h5>
+                        <label className={classes.price}> {storedData.price}</label>
                         <label className={classes.subtitle}>Price does not include taxes and licensing fees</label>
                     </div>
                 </div>

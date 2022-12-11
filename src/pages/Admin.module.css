@@ -7,19 +7,22 @@
 }
 
 .wrapper{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: baseline;
+    gap: 1.4rem;
+    justify-content: space-around;
     width: 100%;
-    align-items: center;
-    text-align: center;
+    padding: 2rem;
 }
 
 .wrapper div{
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    flex:0.5;
 }
+
 .wrapper label{
     font-size: 1.2rem;
     font-weight: 500;

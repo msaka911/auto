@@ -14,7 +14,7 @@ import { isMobile } from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 
 const ProductItem = (props) => {
-  const { make,model,transmission, price,image1,image2,image3,id,mileage,year,bodyStyle,exteriorColor} = props;
+  const { make,model,transmission, price,image1,image2,image3,id,mileage,year,bodyStyle,exteriorColor,drivetrain} = props;
   
   
   const no1=new Buffer(image1.data).toString('base64')
@@ -92,6 +92,7 @@ const RightArrow = ({ style, onClick }) => (
           <div className={classes.right}>
             <label >Year:  &nbsp; {year}</label>
             <label >Body Style: &nbsp;{bodyStyle}</label>
+            <label >Drivetrain:  &nbsp; {drivetrain}</label>
           </div>
 
 

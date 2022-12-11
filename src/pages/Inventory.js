@@ -14,8 +14,21 @@ import { useNavigate } from 'react-router-dom';
 import { Buffer } from 'buffer';
 import Select from 'react-select'
 import Button2 from '../components/UI/Button2';
+
+
 const axios = require('axios');
 
+// const lease = leaseCalculator.calculate({
+//   make: "Toyota",
+//   msrp: 23000,
+//   sellingPrice: 21000,
+//   rv: 13110,
+//   isRVPercent: false,
+//   mf: 0.00125,
+//   salesTax: 6.25,
+//   totalFees: 1200,
+// });
+// const monthlyPayment = lease.getMonthlyPayment();
 
 
 
@@ -53,8 +66,8 @@ const Inventory = (props) => {
 
 useEffect(()=>{
   if(!storedData){
-    axios.get('http://localhost:3000/auto')
-    // axios.get('https://mybackend1.herokuapp.com/auto')
+    // axios.get('http://localhost:3000/auto')
+    axios.get('https://mybackend1.herokuapp.com/auto')
     .then(function (response) {
       dispatch(stateActions.setItems(response.data),
       setData(response.data),
@@ -258,16 +271,16 @@ return (
         </div>
           <label style={{marginTop:"1.5rem",marginBottom:"0.2rem"}}>Price Range</label>
           <div style={{alignItems:'center',justifyItems:'space-between',display:'flex',flexDirection:"column"}} >
-            <input ref={min} type="number" placeholder='min' style={{margin:"0.3rem",width:"6rem",borderRadius:"0.4rem"}}></input>
-            <input ref={max} type="number" placeholder='max' style={{margin:"0.3rem",width:"6rem",borderRadius:"0.4rem"}}></input>
+            <input ref={min} type="number" placeholder='$min' style={{margin:"0.3rem",width:"6.5rem",borderRadius:"0.2rem"}}></input>
+            <input ref={max} type="number" placeholder='$max' style={{margin:"0.3rem",width:"6.5rem",borderRadius:"0.2rem"}}></input>
           </div>
-          <button className="btn" onClick={handlePrice} style={{marginTop:"0.3em",padding: "0.1rem 0.5rem",fontSize:"1rem",borderRadius:"0.4rem"}}>Go</button>
+          <button className="btn" onClick={handlePrice} style={{marginTop:"0.3em",padding: "0.1rem 0.5rem",fontSize:"1rem",borderRadius:"0.2rem"}}>Go</button>
         <div className={classes.filter}>
           <label  style={{marginTop:"1.5rem",marginBottom:"0.2rem"}}>
             Sort By
           </label>
           <Select onChange={(event)=>handleSelect(event)} className={classes.select} styles={customStyles} options={options} ref={selectInputRef} />
-          <button className="btn" onClick={handleReset} style={{marginTop:"1rem",borderRadius:"0.7rem",padding: "0.2rem 0.4rem",fontSize:"1rem"}}>Reset filter</button>
+          <button className="btn" onClick={handleReset} style={{marginTop:"1rem",borderRadius:"0.3rem",padding: "0.2rem 0.4rem",fontSize:"1rem"}}>Reset filter</button>
        </div>
     </div>
 

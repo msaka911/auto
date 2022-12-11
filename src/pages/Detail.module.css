@@ -20,6 +20,15 @@
     margin-bottom: 2rem;
 }
 
+.wrap label{
+    font-size: 1.5rem;
+}
+
+.wrap h5{
+    font-weight: 200;
+    font-size: 1rem;
+}
+
 .slider img{
     position: relative;
     margin: 0 auto;
@@ -86,8 +95,7 @@
 
 .subtitle{
     color: white;
-    font-size: 0.6rem;
-    margin-left: 1rem;
+    font-size: 0.6rem !important;
 }
 
 

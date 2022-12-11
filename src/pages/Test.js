@@ -124,7 +124,9 @@ const Test=(props)=>{
                     <h3>{item.price}</h3> 
                 </div>
             )}
+            
             </>
+            
         </>
         
     )

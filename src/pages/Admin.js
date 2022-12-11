@@ -68,8 +68,8 @@ const Admin=()=>{
         };
         if(count==7&&price.current.value&&model.current.value&&make.current.value&&mileage.current.value&&drivetrain.current.value&&exteriorColor.current.value&&interiorColor.current.value&&engine.current.value&&year.current.value&&bodyStyle.current.value&&transimission.current.value&&description.current.value&&engine.current.value)
         {
-            // axios.post('https://mybackend1.herokuapp.com/auto/upload',
-            axios.post('http://localhost:3000/auto/upload',
+            axios.post('https://mybackend1.herokuapp.com/auto/upload',
+            // axios.post('http://localhost:3000/auto/upload',
               formData,
               config
             ).then((response)=>{
@@ -100,9 +100,9 @@ const Admin=()=>{
         event.preventDefault();
         const axios = require('axios');
         const deletedItem=id.current.value
-        // axios.post(`http://localhost:3001/deleteItem?name=${deletedItem}`,{},
+        // axios.post(`http://localhost:3000/auto/deleteItem/${deletedItem}`,{},
         //`https://mybackend1.herokuapp.com/auto/deleteItem/${deletedItem}`
-        axios.post(`http://localhost:3000/auto/deleteItem?id=${deletedItem}`,{},
+        axios.post(`https://mybackend1.herokuapp.com/auto/deleteItem/${deletedItem}`,{},
 
         {headers: {Authorization: `Bearer ${token}`}}
         ).then((response)=>{
@@ -174,12 +174,12 @@ const Admin=()=>{
                 <label>Engine</label>
                 <input type="text"  ref={engine}/>
             </div>
-            </div>
-         <div>
+            <div>
                 <label>Description</label>
-                <textarea rows={3} type="text"ref={description} />
-         </div>
-         <input type="file" multiple ref={files}/>
+                <textarea rows={10} type="text"ref={description} />
+            </div>
+            </div>
+            <input type="file" multiple ref={files}/>
         <Button>Submit</Button>
         </form>
      <form className={classes.card} onSubmit={deleteItem}>
