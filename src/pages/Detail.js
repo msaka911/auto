@@ -50,7 +50,7 @@ const Detail=()=>{
       return(
         <Fragment>
         <div className={classes.wrapper}>
-                <h3 className={isMobile?classes.h2:classes.detail}>{storedData.make} {storedData.model} </h3>
+                <h3 className={classes.detail}>{storedData.make} {storedData.model} </h3>
 
             <Slider 
             className={isMobile?classes.mediaSlider:classes.slider}
@@ -78,8 +78,8 @@ const Detail=()=>{
                     <label className={classes.detail}><h5>Exterior Colour:</h5>  {storedData.exteriorColor} </label>
                     <label className={classes.detail}><h5>Interior Colour:</h5>  {storedData.interiorColor} </label>
                     <label className={classes.detail}><h5>Engine:</h5>  {storedData.engine} </label>
-                    <div style={{display:"flex",flexDirection:"column",alignItems:"flex-start"}}>
-                        <h5 style={{color:"white"}}>Price:</h5>
+                    <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
+                        <h5 style={{color:"white",textAlign:"center"}}>Price:</h5>
                         <label className={classes.price}> {storedData.price}</label>
                         <label className={classes.subtitle}>Price does not include taxes and licensing fees</label>
                     </div>

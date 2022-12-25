@@ -77,7 +77,8 @@ const RightArrow = ({ style, onClick }) => (
         <header className={classes.header}>
           <label className={classes.priceTag}>{make+"  "} {model}</label>
           <div className={classes.priceWrap}>
-            <label className={classes.price}>Price: &nbsp;  <label className={classes.priceTag}>CAD{price}</label></label>
+            <label className={classes.price}>Price: &nbsp; </label>
+            <label className={classes.price}>CAD{price}</label>
             <label className={classes.subtitle}>Price does not include taxes and licensing fees.</label>
           </div>
         </header>

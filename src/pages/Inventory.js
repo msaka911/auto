@@ -262,6 +262,8 @@ return (
         </ul>
       </section> */}
       <br/>
+
+      <div style={{display:isMobile?'none':'block'}}>
       <div className={classes.filterParent}>
 
       <div className={classes.filter} >
@@ -285,7 +287,7 @@ return (
     </div>
 
   </div>
-
+  </div>
       {/*-----------------------------------------------------------*/}
 
         {reachCount?page:null}
