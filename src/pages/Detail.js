@@ -20,7 +20,9 @@ const Detail=()=>{
     
     useEffect(()=>{
         // axios.get(`http://localhost:3000/auto/details/${getId}`)
-        axios.get(`https://mybackend1.herokuapp.com/auto/details/${getId}`)
+        // axios.get(`https://mybackend1.herokuapp.com/auto/details/${getId}`)
+        axios.get(`http://44.201.167.111:3000/auto/details/${getId}`)
+
         .then(function (response) {
             setData(response.data)
             })

@@ -68,7 +68,8 @@ const Admin=()=>{
         };
         if(count==7&&price.current.value&&model.current.value&&make.current.value&&mileage.current.value&&drivetrain.current.value&&exteriorColor.current.value&&interiorColor.current.value&&engine.current.value&&year.current.value&&bodyStyle.current.value&&transimission.current.value&&description.current.value&&engine.current.value)
         {
-            axios.post('https://mybackend1.herokuapp.com/auto/upload',
+            axios.post('http://44.201.167.111:3000/auto/upload',
+            // axios.post('https://mybackend1.herokuapp.com/auto/upload',
             // axios.post('http://localhost:3000/auto/upload',
               formData,
               config
@@ -102,7 +103,8 @@ const Admin=()=>{
         const deletedItem=id.current.value
         // axios.post(`http://localhost:3000/auto/deleteItem/${deletedItem}`,{},
         //`https://mybackend1.herokuapp.com/auto/deleteItem/${deletedItem}`
-        axios.post(`https://mybackend1.herokuapp.com/auto/deleteItem/${deletedItem}`,{},
+        // axios.post(`https://mybackend1.herokuapp.com/auto/deleteItem/${deletedItem}`,{},
+        axios.post(`http://44.201.167.111:3000/auto/deleteItem/${deletedItem}`,{},
 
         {headers: {Authorization: `Bearer ${token}`}}
         ).then((response)=>{
